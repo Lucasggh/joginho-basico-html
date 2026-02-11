@@ -1,38 +1,43 @@
 let Pontos = 0
 let Qtd = 0
-let PontosText = document.getElementById("PontosText")
-PontosText.innerText="0"
-let spawner = document.getElementById("spawner")
-let colector = document.getElementById("colector")
-let input = document.getElementById("input")
-let button = document.getElementById("button")
-function verificarColisao(mx,my,cX,cY,coinW,colectorH){
-let vY = Math.abs(my - (cY + 5))
-let vX = Math.abs(mx - (cX +5))
-let hitbox = Math.abs(parseInt(colectorH)/2 + parseInt(coinW)/2)
-return vY <= hitbox && vX <= hitbox
-}    
+const PontosText = document.getElementById("PontosText")
+const spawner = document.getElementById("spawner")
+const colector = document.getElementById("colector")
+const input = document.getElementById("input")
+const button = document.getElementById("button")
 let colectorSize = 40
 const moedaSize = 10
-document.addEventListener('mousemove',(e)=>{
+const geradorRect = spawner.getBoundingClientRect().left
+let coins
+let dentroDaArea
+let x,y
+const loja = document.getElementById("loja")
 
-    Xrelativo = e.clientX - spawner.getBoundingClientRect().left
-    Yrelativo = e.clientY - spawner.getBoundingClientRect().top    
-    let dentroDaArea = Xrelativo >= 0 && Xrelativo <= 300 && Yrelativo >= 0 && Yrelativo <= 300
-    let coins = document.querySelectorAll(".coin")
+PontosText.innerText="0"
+function lojaOnOff(){
+    loja.classList.toggle("hideLoja")
+}
+function verificarColisao(mx,my,cX,cY,coinW,colectorH){
+    let vY = Math.abs(my - (cY + 5))
+    let vX = Math.abs(mx - (cX +5))
+    let hitbox = Math.abs(parseInt(colectorH)/2 + parseInt(coinW)/2)
+    return vY <= hitbox && vX <= hitbox
+}    
+
+spawner.addEventListener('mousemove',(e)=>{
+
+    Xrelativo = e.clientX - geradorRect
+    Yrelativo = e.clientY - geradorRect   
+    dentroDaArea = Xrelativo >= 0 && Xrelativo <= 300 && Yrelativo >= 0 && Yrelativo <= 300
+
     coins.forEach(coin => {
     if (verificarColisao(Xrelativo,Yrelativo,parseInt(coin.style.left),parseInt(coin.style.top),moedaSize,colectorSize)){
         coin.remove()
         Pontos++
         PontosText.innerText = Pontos
-        Qtd--
-        
-    }
-
-});
-
-
-    colector.style.cssText = `
+        Qtd--}});
+    colector.style.cssText = 
+        `
         position: absolute;
         width: ${colectorSize}px;
         height: ${colectorSize}px;
@@ -40,11 +45,12 @@ document.addEventListener('mousemove',(e)=>{
         background-color: gray;
         top:${Yrelativo- parseInt(colector.style.height)/2}px;
         left:${Xrelativo - parseInt(colector.style.width)/2}px;
-        visibility: ${dentroDaArea ? 'visible' : 'hidden'};` 
-}) 
+        visibility: ${dentroDaArea ? 'visible' : 'hidden'};` }) 
+
 let intervalo = setInterval(() => {
     if(Qtd < 10){
-        spawnar()
+        spawnar()    
+
     }
 }, 500);
 
@@ -62,15 +68,15 @@ function spawnar(){
     coin.style.cssText += `top: ${rY}px; left:${rX}px;`
     spawner.appendChild(coin)
     Qtd++
+    coins = document.querySelectorAll(".coin")
 }
 
 button.addEventListener('mousedown',()=>{
     colectorSize = input.value
 })
-let loja = document.getElementById("loja")
-function lojaOnOff(){
-    loja.classList.toggle("hideLoja")
 
-}
+
+
+
 document.getElementById('shop').addEventListener('click',  lojaOnOff);
 document.getElementById('botaoFecharloja').addEventListener('click',  lojaOnOff);
