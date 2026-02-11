@@ -30,26 +30,18 @@ document.addEventListener('mousemove',(e)=>{
     }
 
 });
-colector.style.cssText = `
-    position: absolute;
-    width: ${colectorSize}px;
-    height: ${colectorSize}px;
-    border-radius: 50%;
-    background-color: gray;
-    top:${Yrelativo- parseInt(colector.style.height)/2}px;
-    left:${Xrelativo - parseInt(colector.style.width)/2}px;
-    visibility: ${dentroDaArea ? 'visible' : 'hidden'};`
 
 
-    
-/*     console.log(e.clientX)
-    console.log(e.clientY) */
-    
+    colector.style.cssText = `
+        position: absolute;
+        width: ${colectorSize}px;
+        height: ${colectorSize}px;
+        border-radius: 50%;
+        background-color: gray;
+        top:${Yrelativo- parseInt(colector.style.height)/2}px;
+        left:${Xrelativo - parseInt(colector.style.width)/2}px;
+        visibility: ${dentroDaArea ? 'visible' : 'hidden'};` 
 }) 
-
-
-
-
 let intervalo = setInterval(() => {
     if(Qtd < 10){
         spawnar()
@@ -57,8 +49,8 @@ let intervalo = setInterval(() => {
 }, 500);
 
 function RandomXY(){
-    let x = Math.floor(Math.random() * (304 + 1))
-    let y = Math.floor(Math.random() * (304 + 1))
+    let x = Math.floor(Math.random() * (300 + 1))
+    let y = Math.floor(Math.random() * (300 + 1))
     return {x:x, y:y}
 }
 
@@ -66,7 +58,7 @@ function spawnar(){
     let rX= RandomXY().x
     let rY = RandomXY().y
     let coin = document.createElement("div")
-    coin.className="coin"
+    coin.classList="coin "
     coin.style.cssText += `top: ${rY}px; left:${rX}px;`
     spawner.appendChild(coin)
     Qtd++
@@ -75,3 +67,10 @@ function spawnar(){
 button.addEventListener('mousedown',()=>{
     colectorSize = input.value
 })
+let loja = document.getElementById("loja")
+function lojaOnOff(){
+    loja.classList.toggle("hideLoja")
+
+}
+document.getElementById('shop').addEventListener('click',  lojaOnOff);
+document.getElementById('botaoFecharloja').addEventListener('click',  lojaOnOff);

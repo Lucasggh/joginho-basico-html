@@ -35,3 +35,76 @@ body{
     background-color: gray;
     position: absolute;
 }
+.shop{
+    width: 100px;
+    height: 30px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 4px solid rgb(58, 156, 236);
+    background-color: rgb(4, 134, 241);
+    box-shadow: 0 0 10px 1px  ;
+}
+.botao{
+    height: 30px;
+    border-radius: 10px;
+    border: 4px solid rgb(58, 156, 236);
+    background-color: rgb(4, 134, 241);
+    box-shadow: 0 0 10px 1px  ;
+}
+.inputArea{
+    background-color: rgb(177, 177, 177);
+    border-radius: 7px;
+    border: 3px solid grey;
+    box-shadow: 0 0 10px 1px  ;
+}
+
+.botao:active,.shop:active,.upgrade:active,.botaoFecharloja:active{
+    transform: scale(0.9);
+    transition: 0.1s;
+}
+.botao:hover,.shop:hover,.upgrade:hover,.botaoFecharloja:hover{
+    cursor: pointer;
+}
+.loja{
+    background-color: rgb(61, 39, 39);
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    border: 10px solid rgb(102, 82, 82);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 1px  ;
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.upgrade{
+    background-color: aqua;
+    width: 100px;
+    height: 100px;
+
+}
+.upgradeContainer{
+    display: flex;
+    width: 90%;
+    height: 80%;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    flex-basis:100%;
+}
+.botaoFecharloja{
+    height: 30px;
+    border-radius: 10px;
+    border: 4px solid rgb(58, 156, 236);
+    background-color: rgb(4, 134, 241);
+    box-shadow: 0 0 10px 1px  ;
+}
+.hideLoja{
+    visibility: hidden;
+}
+.hideCoin{
+    visibility: hidden;
+}

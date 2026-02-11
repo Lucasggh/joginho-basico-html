@@ -3,22 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Apple colector</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+        <div style="display: flex;">
         <input 
-    type="number" 
-    id="input" 
-    value="0"
-    oninput="this.value = this.value.replace(/\D/g, '')"
->
-        <button type="submit" id="button" >Ok</button>
+        placeholder="Alterar area do colector"
+        class="inputArea"
+        type="text" 
+        id="input" 
+        value="0"
+        oninput="this.value = this.value.replace(/\D/g, '')">
+        <button type="submit" id="button" class="botao">Mudar tamanho</button>
+        </div>
         <h2 id="PontosText"></h2>
         <div class="spawner" id="spawner">    
         <div id="colector" class="colector"></div>
         </div>
-
+        <button id="shop" class="shop ">Loja</button>
+        <div id="loja" class="loja hideLoja">
+            
+        <h2 style="height: 20px;width: 100%; text-align: center; color: white;">Loja de melhorias</h2>
+        <div class="upgradeContainer"> 
+        <button class="upgrade"></button>
+        <button class="upgrade"></button>
+        <button class="upgrade"></button>
+        <button class="upgrade"></button>
+        
+        </div>
+        <button class="botaoFecharloja " id="botaoFecharloja">fechar Loja</button>
 
 
     <script src="script.js"></script>
