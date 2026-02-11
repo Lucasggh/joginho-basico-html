@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <input 
+    type="number" 
+    id="input" 
+    value="0"
+    oninput="this.value = this.value.replace(/\D/g, '')"
+>
+        <button type="submit" id="button" >Ok</button>
+        <h2 id="PontosText"></h2>
+        <div class="spawner" id="spawner">    
+        <div id="colector" class="colector"></div>
+        </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
